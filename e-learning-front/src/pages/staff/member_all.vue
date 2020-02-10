@@ -1,0 +1,55 @@
+<template>
+    <div>
+      <div class="staff_title">所以会员查询</div>
+      <div>
+        <el-select v-model="c_type" placeholder="请选择查询条件">
+          <el-option
+            v-for="item in course_type"
+            :key="item.value"
+            :label="item.value"
+            :value="item.value">
+          </el-option>
+        </el-select>
+        <el-input maxlength="20" show-word-limit placeholder="请输入关键字" style="width: 300px"></el-input>
+        <el-button plain  icon="el-icon-search">搜索</el-button>
+      </div>
+      <div>
+      <div class="staff_item_container">
+        <member v-for="item in memberData" :key="item.index" :memberData="item"></member>
+      </div>
+      </div>
+    </div>
+</template>
+
+<script>
+import member from '@/components/admin/member'
+import {getAllMember} from '@/api/api'
+export default {
+  name: 'member_all',
+  data () {
+    return {
+      memberData: 2,
+      course_type: [{
+        value: 'ID'
+      }, {
+        value: '手机号'
+      }, {
+        value: '性别'
+      }],
+      c_type: ''
+    }
+  },
+  components: {
+    member
+  },
+  created () {
+    getAllMember().then(res => {
+      if (res) {
+        this.memberData = res
+        console.log(this.memberData)
+      }
+    })
+  }
+}
+</script>
+<style scoped src="../../assets/css/staff.css"></style>

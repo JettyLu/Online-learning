@@ -1,0 +1,6 @@
+export const LOGINSTAFF = 'loginStaff'
+export const LOGOUTSTAFF = 'logoutStaff'
+export const LOGINMEMBER = 'loginMember'
+export const LOGOUTMEMBER = 'logoutMember'
+export const SAVESTAFF = 'saveStaff'
+export const SAVEMEMBER = 'saveMember'
